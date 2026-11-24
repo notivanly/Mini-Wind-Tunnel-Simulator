@@ -43,3 +43,19 @@ Other tweakable things: slider ranges and defaults (the `CTL` and `S` variables)
 - Lift and L/D curves with a draggable marker (arrow keys work too)
 - A live free-body diagram with the numbers worked out
 - Responsive, keyboard accessible, respects reduced motion
+
+## Machine Learning Lab
+
+Open [AI Lab](./ai-lab.html) from the original page, or visit `ai-lab.html` directly on GitHub Pages.
+
+This is a **real trained regression surrogate**, not a hard-coded "AI" output. Click **Train model** to:
+- Generate a reproducible synthetic dataset using the same aerodynamic coefficient equations as the original simulator.
+- Fit an RBF (Gaussian radial-basis-feature) ridge regression model to 84 training angles.
+- Evaluate on **36 held-out angles** and report MAE and RMSE for lift and drag coefficients.
+- Compare model and physics outputs under different wind speeds, air densities, wing areas, and angles of attack.
+- Display a live comparison curve across the training domain.
+
+**Limitations:** Because the training labels come entirely from the simplified physics model, good predictions establish **fidelity to that model only**. They do not validate lift or drag against experimental measurements or CFD. The training and evaluation split is seeded for reproducibility and is not independently acquired experimental evidence. The original airfoil model and visualizations remain unchanged.
+
+**Next scientific step:** Incorporate documented wind-tunnel polar measurements (e.g., real airfoil lift/drag data), split by experimental conditions or airfoil geometry, and evaluate predictions separately from training data. Include uncertainty and applicability bounds.
+
